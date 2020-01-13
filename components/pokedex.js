@@ -16,7 +16,7 @@ class PokeDex extends React.Component {
         const json = await response.json()
         console.log(json.results)
         this.setState({pokemon: json.results})
-    }
+    } 
 
     
       
