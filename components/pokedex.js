@@ -2,7 +2,7 @@ class PokeDex extends React.Component {
     constructor() {
         super()
         this.state = { 
-            pokemon: [],
+            sweaters: [],
             caught: 4
         }
     }
@@ -12,24 +12,24 @@ class PokeDex extends React.Component {
     }
     
     async loadPokemon() {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/?offset=20&limit=100`)
+        const response = await fetch(`http://145.24.222.55:8000/sweaters`)
         const json = await response.json()
-        console.log(json.results)
-        this.setState({pokemon: json.results})
+        console.log(json.items)
+        this.setState({sweaters: json.items})
     } 
 
     
       
 
     render() {
-        let thumbs = this.state.pokemon.map((pokemon, i) =>
-            <Card key={i} name={pokemon.name} uri={pokemon.url}>{pokemon.name}></Card>
+        let thumbs = this.state.sweaters.map((sweaters, i) =>
+            <Card key={i} name={sweaters.name} ></Card>
         )
 
         return (
             <div className="pokedex">
                 <div>
-                    <button>Load next 9 Pokémon</button>
+                    <button>Load next 9 sweaters</button>
                 </div>
                 <div>
                     Caught: {this.state.caught}
