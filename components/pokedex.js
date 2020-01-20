@@ -3,7 +3,7 @@ class PokeDex extends React.Component {
         super()
         this.state = { 
             sweaters: [],
-            caught: 4
+            caught: 4,
         }
     }
 
@@ -23,7 +23,7 @@ class PokeDex extends React.Component {
 
     render() {
         let thumbs = this.state.sweaters.map((sweaters, i) =>
-            <Card key={i} name={sweaters.name} ></Card>
+            <Card key={i} name={sweaters.name} color={sweaters.color} size={sweaters.size} image={sweaters.image}></Card>
         )
 
         return (
