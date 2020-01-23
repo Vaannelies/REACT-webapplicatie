@@ -16,7 +16,10 @@ body * {
 .header {}
 
 .header img {
-    width: 200px;
+    width: 300px;
+    margin-left:30px;
+    padding-top:30px;
+    padding-bottom:30px;
 }
 
 /* POKEDEX */
@@ -37,7 +40,7 @@ body * {
     grid-template-columns: 30vw 30vw 30vw;
     column-gap: 10px;
     row-gap: 10px;
-    color: rgb(58, 58, 205);
+    color: #9b104e;
 }
 
 .pokedex .thumbnails div {
@@ -74,15 +77,15 @@ body * {
 
 button {
     padding: 8px;
-    color: rgb(58, 58, 205);
-    background-color: rgb(142, 197, 242);
+    color: #483c46;
+    background-color: #e9c46a;
     font-family: 'Press Start 2P', cursive;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: rgb(183, 219, 249);
+    background-color: #ffb627;
 }
 
 button:active {
