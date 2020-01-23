@@ -22,6 +22,10 @@ class Card extends React.Component {
         console.log(json)
          this.setState({color: this.props.color, size: this.props.size})
     }
+
+    showDetails() {
+        alert('Clicked!')
+    }
 //kaartje gaat fetch doen, daarin zitten gegevens over specifieke pokemon, die gegevens moet je terug in je state zetten. eigenlij khetzelfde wat we gedaan hebben in die parent
     render() {
         return (
@@ -32,8 +36,9 @@ class Card extends React.Component {
                     Color: {this.props.color} <br></br>
                     Size: {this.props.size}
                 </div>
-                <div><button>Details?!</button></div>
+                <div><button onClick={this.showDetails}>Details?!</button></div>
             </div>
         );
     }
 }
+

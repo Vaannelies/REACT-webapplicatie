@@ -14,7 +14,7 @@ class PokeDex extends React.Component {
     async loadPokemon() {
         const response = await fetch(`http://145.24.222.55:8000/sweaters`)
         const json = await response.json()
-        console.log(json.items)
+        console.log(json.items)+
         this.setState({sweaters: json.items})
     } 
 
