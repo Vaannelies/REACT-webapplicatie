@@ -23,7 +23,7 @@ class PokeDex extends React.Component {
 
     render() {
         let thumbs = this.state.sweaters.map((sweaters, i) =>
-            <Card key={i} name={sweaters.name} color={sweaters.color} size={sweaters.size} image={sweaters.image}></Card>
+            <Sweatercard key={i} name={sweaters.name} color={sweaters.color} size={sweaters.size} image={sweaters.image}></Sweatercard>
         )
 
         return (
@@ -37,6 +37,7 @@ class PokeDex extends React.Component {
                 <div className="thumbnails">
                     {thumbs}
                 </div>
+              
             </div>
         )   
     }
