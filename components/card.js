@@ -6,6 +6,7 @@ class Card extends React.Component {
             color: "",
             size: "",
         }
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -26,6 +27,12 @@ class Card extends React.Component {
     showDetails() {
         alert('Clicked!')
     }
+
+    onSubmit(event) {
+        event.preventDefault();
+
+        console.log(this.input.value);
+    }
 //kaartje gaat fetch doen, daarin zitten gegevens over specifieke pokemon, die gegevens moet je terug in je state zetten. eigenlij khetzelfde wat we gedaan hebben in die parent
     render() {
         return (
@@ -37,6 +44,10 @@ class Card extends React.Component {
                     Size: {this.props.size}
                 </div>
                 <div><button onClick={this.showDetails}>Details?!</button></div>
+
+                <form onSubmit={this.onSubmit}>
+                <input onChange={this.onChange} ref={input => this.input = input} />
+                </form>
             </div>
         );
     }
