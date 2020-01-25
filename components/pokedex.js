@@ -104,7 +104,17 @@ class PokeDex extends React.Component {
 
     render() {
         let thumbs = this.state.sweaters.map((sweaters, i) =>
-            <Sweatercard key={i} name={sweaters.name} color={sweaters.color} size={sweaters.size} image={sweaters.image} id={sweaters._id} onDelete={this.onDelete} onEditSubmit={this.onEditSubmit}></Sweatercard>
+            <Sweatercard key={i} 
+            name={sweaters.name} 
+            color={sweaters.color} 
+            size={sweaters.size} 
+            image={sweaters.image} 
+            id={sweaters._id} 
+            created_at={sweaters.created_at}  
+            onDelete={this.onDelete} 
+            onEditSubmit={this.onEditSubmit}>
+                
+            </Sweatercard>
         )
    
        

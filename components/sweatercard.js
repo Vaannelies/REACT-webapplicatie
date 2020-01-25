@@ -3,7 +3,8 @@ class Sweatercard extends React.Component {
         super(props);
 
         this.state = {
-            isEdit: false
+            isEdit: false,
+            isDetails: false,
         };
 
         this.onDelete = this.onDelete.bind(this);
@@ -32,12 +33,13 @@ class Sweatercard extends React.Component {
 
     onBack() {
         this.setState({isEdit:false});
+        this.setState({isDetails:false});
     }
 
 
     showDetails() {
-        alert( this.props.id);
-        
+        this.setState({isDetails: true});
+        console.log(this.state.isDetails);
     }
     
     componentWillMount() {
@@ -50,7 +52,7 @@ class Sweatercard extends React.Component {
 
 
     render() {
-        const {name, size, color, id} = this.props;
+        const {name, size, color, id, created_at} = this.props;
 
       
 
@@ -78,9 +80,28 @@ class Sweatercard extends React.Component {
                                     </span>
                                 </div>
                                 {`  `}
-                                <button>Add</button>
-                                <button onClick={this.onBack}>Back</button>
+                                <div><button>Submit</button></div>
+                                <div><button onClick={this.onBack}>Back</button></div>
                         </form>
+                    )
+                    : this.state.isDetails 
+                    ? (
+                        <div>
+                        <div>{name}</div>
+                        <div><img src="https://cdn0.iconfinder.com/data/icons/clothes-one-2/32/Clothes-89-128.png"/></div>
+                        <div>
+                            Size: {size} 
+                            <br></br> 
+                            Color: {color}
+                            <br></br>
+                            ID: {id}
+                            <br></br>
+                            Created at: {created_at}
+                        </div>
+                        <div><button onClick={this.onEdit}>Edit</button></div>
+                        <div><button onClick={this.onDelete}>Delete</button></div>
+                        <div><button onClick={this.onBack}>Back</button></div>
+                        </div>
                     )
                     : (
                         <div>
