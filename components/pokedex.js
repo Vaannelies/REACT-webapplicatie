@@ -37,6 +37,20 @@ class PokeDex extends React.Component {
                 <div className="thumbnails">
                     {thumbs}
                 </div>
+                <div>
+                    {
+                        this.state.sweaters.map(sweaters => {
+                            return (
+                                <div key={sweaters.name}>
+                                <span>Hey {sweaters.name}</span><br></br>
+                                <span>{sweaters.color}</span>
+                                </div>
+                            )
+
+                    })
+                }
+                
+                </div>
               
             </div>
         )   

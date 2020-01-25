@@ -4,6 +4,15 @@ class Sweatercard extends React.Component {
         alert('Clicked!')
     }
     
+    componentWillMount() {
+        console.log('WILL MOUNT');
+    }
+   
+    componentDidMount() {
+        console.log('DID MOUNT');
+    }
+
+
     render() {
         const {name, size, color} = this.props;
 
