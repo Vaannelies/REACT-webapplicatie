@@ -5,6 +5,7 @@ class PokeDex extends React.Component {
             sweaters: [],
             caught: 4,
         }
+        this.onDelete = this.onDelete.bind(this);
     }
 
     componentDidMount() {
@@ -18,12 +19,23 @@ class PokeDex extends React.Component {
         this.setState({sweaters: json.items})
     } 
 
-    
+    onDelete(name) {
+  
+        const sweaters = this.state.sweaters;
+
+        const filteredSweaters = sweaters.filter(sweater => {
+            return sweater.name !== name;
+        });
+        console.log(filteredSweaters);
+        this.setState({sweaters: filteredSweaters})
+
+      //  this.setState
+    }
       
 
     render() {
         let thumbs = this.state.sweaters.map((sweaters, i) =>
-            <Sweatercard key={i} name={sweaters.name} color={sweaters.color} size={sweaters.size} image={sweaters.image}></Sweatercard>
+            <Sweatercard key={i} name={sweaters.name} color={sweaters.color} size={sweaters.size} image={sweaters.image} onDelete={this.onDelete}></Sweatercard>
         )
 
         return (
@@ -37,20 +49,7 @@ class PokeDex extends React.Component {
                 <div className="thumbnails">
                     {thumbs}
                 </div>
-                <div>
-                    {
-                        this.state.sweaters.map(sweaters => {
-                            return (
-                                <div key={sweaters.name}>
-                                <span>Hey {sweaters.name}</span><br></br>
-                                <span>{sweaters.color}</span>
-                                </div>
-                            )
-
-                    })
-                }
-                
-                </div>
+            
               
             </div>
         )   
