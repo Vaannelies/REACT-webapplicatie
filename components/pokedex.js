@@ -19,15 +19,23 @@ class PokeDex extends React.Component {
         this.setState({sweaters: json.items})
     } 
 
-    onDelete(name) {
-  
+    onDelete(id) {
+        const requestOptions = {
+            method: 'DELETE'
+        };
+
         const sweaters = this.state.sweaters;
 
         const filteredSweaters = sweaters.filter(sweater => {
-            return sweater.name !== name;
+            return sweater._id !== id;
         });
+        console.log(id);
+      
         console.log(filteredSweaters);
         this.setState({sweaters: filteredSweaters})
+        fetch("http://145.24.222.55:8000/sweaters/" + id, requestOptions).then((response) => {
+            return response.json();
+        });
 
       //  this.setState
     }
@@ -35,7 +43,7 @@ class PokeDex extends React.Component {
 
     render() {
         let thumbs = this.state.sweaters.map((sweaters, i) =>
-            <Sweatercard key={i} name={sweaters.name} color={sweaters.color} size={sweaters.size} image={sweaters.image} onDelete={this.onDelete}></Sweatercard>
+            <Sweatercard key={i} name={sweaters.name} color={sweaters.color} size={sweaters.size} image={sweaters.image} id={sweaters._id} onDelete={this.onDelete}></Sweatercard>
         )
 
         return (

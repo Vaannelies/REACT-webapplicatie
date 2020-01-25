@@ -3,16 +3,18 @@ class Sweatercard extends React.Component {
         super(props);
 
         this.onDelete = this.onDelete.bind(this);
+        this.showDetails = this.showDetails.bind(this);
     }
 
     onDelete() {
-        const { onDelete, name } = this.props;
+        const { onDelete, id } = this.props;
         
-        onDelete(name);
+        onDelete(id);
     }
 
     showDetails() {
-        alert('Clicked!')
+        alert( this.props.id);
+        
     }
     
     componentWillMount() {
