@@ -9,6 +9,9 @@ class AddSweater extends React.Component {
         event.preventDefault();
 
         this.props.onAdd(this.nameInput.value, this.colorInput.value, this.sizeInput.value);
+        this.nameInput.value = '';
+        this.colorInput.value = '';
+        this.sizeInput.value = '';
     }
 
 

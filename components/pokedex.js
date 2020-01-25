@@ -7,6 +7,7 @@ class PokeDex extends React.Component {
         }
         this.onDelete = this.onDelete.bind(this);
         this.onAdd = this.onAdd.bind(this);
+        this.onEditSubmit = this.onEditSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -64,11 +65,46 @@ class PokeDex extends React.Component {
 
       //  this.setState
     }
+
+    onEditSubmit(name, color, size, id) {
+        const requestOptions = {
+            method: 'PUT'
+        };
+        let sweaters = this.state.sweaters;
+
+        sweaters = sweaters.map(sweater => {
+            if (sweater._id == id) {
+                sweater.name = name;
+                sweater.color = color;
+                sweater.size = size;
+            }
+            return sweater;
+        });
+
+        
+        this.setState({sweaters});
+        fetch("http://145.24.222.55:8000/sweaters/" + id, {
+        method: 'PUT',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+        name: name,
+        color: color,
+        size: size
+  })
+
+
+})
+    
+    }
+
       
 
     render() {
         let thumbs = this.state.sweaters.map((sweaters, i) =>
-            <Sweatercard key={i} name={sweaters.name} color={sweaters.color} size={sweaters.size} image={sweaters.image} id={sweaters._id} onDelete={this.onDelete}></Sweatercard>
+            <Sweatercard key={i} name={sweaters.name} color={sweaters.color} size={sweaters.size} image={sweaters.image} id={sweaters._id} onDelete={this.onDelete} onEditSubmit={this.onEditSubmit}></Sweatercard>
         )
    
        
@@ -83,7 +119,7 @@ class PokeDex extends React.Component {
                     <button>Load next 9 sweaters</button>
                 </div>
                 <div>
-                    Caught: {this.state.total}
+                    Bought: {this.state.total}
                 </div>
                 <div className="thumbnails">
                     {thumbs}
