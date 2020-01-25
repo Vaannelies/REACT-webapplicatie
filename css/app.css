@@ -20,6 +20,7 @@ body * {
     margin-left:30px;
     padding-top:30px;
     padding-bottom:30px;
+    
 }
 
 /* POKEDEX */
@@ -27,11 +28,14 @@ body * {
 .pokedex {
     background-color: rgb(19, 43, 53);
     min-height: 50vh;
+    padding-top:10px;
+   
 }
 
-.pokedex>div:nth-of-type(1), .pokedex>div:nth-of-type(2) {
+.pokedex>div:nth-of-type(1), .pokedex>div:nth-of-type(2), .pokedex>div:nth-of-type(3) {
     margin: 14px;
-    display: inline-block;
+    
+    
 }
 
 .pokedex .thumbnails {
@@ -95,4 +99,30 @@ button:active {
 
 button:focus {
     outline: none;
+}
+
+.add-new-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgb(0, 0, 0, 0.4);
+    padding:10px;
+    margin-top: 20px;
+    display: flex;
+    width: 90%;
+  
+    flex-direction: column;
+    color: rgb(10, 22, 27);
+    
+    
+}
+form {
+    display:flex;
+    flex-wrap:wrap;
+    
+}
+input {
+    background-color: white;
+    border-radius: 10px;
+    height:3em;
+
 }
