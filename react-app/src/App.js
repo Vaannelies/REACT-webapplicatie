@@ -12,9 +12,9 @@ function App() {
     <div className="App">
        
       
-      {/* <Header /> */}
+      <Header />
       <PokeDex />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
