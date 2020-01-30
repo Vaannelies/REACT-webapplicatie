@@ -1,4 +1,7 @@
 import React from 'react';
+import { Router, Route, hashHistory } from "react-router";
+import Header from "./Header";
+
 
 class Sweatercard extends React.Component {
     
@@ -46,11 +49,14 @@ class Sweatercard extends React.Component {
     }
 
     showDetailsURL() {
-       
+
+      
+      
+
         let id = this.props.params.id;
         if(id == 'hoi'){
        // this.setState({isDetails: true});
-        console.log("hoi");
+        console.log(this.props.params.id);
         }
     }
     
@@ -65,7 +71,6 @@ class Sweatercard extends React.Component {
 
     render() {
         const {name, size, color, id, created_at} = this.props;
-
       
 
         return (

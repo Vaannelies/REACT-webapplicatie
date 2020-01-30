@@ -1,6 +1,7 @@
 import React from 'react';
 import AddSweater from './AddSweater';
 import Sweatercard from './Sweatercard';
+import { Router, Route, hashHistory} from 'react-router';
 
 class PokeDex extends React.Component {
     constructor() {
@@ -107,6 +108,7 @@ class PokeDex extends React.Component {
       
 
     render() {
+   
         let thumbs = this.state.sweaters.map((sweaters, i) =>
             <Sweatercard key={i} 
             name={sweaters.name} 
