@@ -46,7 +46,7 @@ class Sweatercard extends React.Component {
     }
 
     showDetailsURL() {
-        <Route path='/:id' render={() => <Header/>}/>
+       
         let id = this.props.params.id;
         if(id == 'hoi'){
        // this.setState({isDetails: true});
