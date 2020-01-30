@@ -120,7 +120,7 @@ class PokeDex extends React.Component {
        
 
         return (
-           
+        
             <div className="pokedex">
                 <div>
                     <AddSweater onAdd={this.onAdd}/>

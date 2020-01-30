@@ -27,19 +27,19 @@ class AddSweater extends React.Component {
             <form onSubmit={this.onSubmit}>
                 <div>
                     <span>Name {`  `}
-                    <input placeholder="Enter a name..." ref={nameInput => this.nameInput = nameInput} />
+                    <input placeholder="Enter a name..." ref={nameInput => this.nameInput = nameInput} required />
                     </span>
                 </div>
                 {`  `}
                 <div>
                     <span>Color {`  `}
-                    <input placeholder="Pick a color..." ref={colorInput => this.colorInput = colorInput} />
+                    <input placeholder="Pick a color..." ref={colorInput => this.colorInput = colorInput} required/>
                     </span>
                 </div>
                 {`  `}
                 <div>
                     <span>Size {`  `}
-                    <input placeholder="Pick a size..." ref={sizeInput => this.sizeInput = sizeInput} />
+                    <input placeholder="Pick a size..." ref={sizeInput => this.sizeInput = sizeInput} required/>
                     </span>
                 </div>
                 {`  `}

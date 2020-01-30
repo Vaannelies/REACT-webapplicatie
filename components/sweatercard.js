@@ -1,4 +1,7 @@
+
+
 class Sweatercard extends React.Component {
+    
     constructor(props){
         super(props);
 
@@ -40,6 +43,15 @@ class Sweatercard extends React.Component {
     showDetails() {
         this.setState({isDetails: true});
         console.log(this.state.isDetails);
+    }
+
+    showDetailsURL() {
+        <Route path='/:id' render={() => <Header/>}/>
+        let id = this.props.params.id;
+        if(id == 'hoi'){
+       // this.setState({isDetails: true});
+        console.log("hoi");
+        }
     }
     
     componentWillMount() {
