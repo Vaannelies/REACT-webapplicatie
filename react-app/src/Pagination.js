@@ -27,7 +27,7 @@ class Pagination extends React.Component {
 
         return (
             <div className="add-new-card">
-            <h3>Choose page</h3>
+            <h3>Choose page (werkt niet)</h3>
 
             <button onClick={this.onNext}>Load next 5 sweaters</button>
             <button onClick={this.onPrevious}>Load previous 5 sweaters</button>
