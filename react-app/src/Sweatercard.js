@@ -23,8 +23,6 @@ class Sweatercard extends React.Component {
         this.showDetails = this.showDetails.bind(this);
     }
 
-    
-
 
     onDelete() {
         const { onDelete, id } = this.props;
@@ -43,12 +41,6 @@ class Sweatercard extends React.Component {
         this.setState({isEdit: false});
     }
 
-    // onBack() {
-    //     this.setState({isEdit:false});
-    //     this.setState({isDetails:false});
-    //     this.setState({redirect:true});
-    // }
-
     onBack = () => this.setState({isEdit:false, isDetails:false, redirect:true});
 
 
@@ -57,18 +49,7 @@ class Sweatercard extends React.Component {
         console.log(this.state.isDetails);
     }
 
-    // showDetailsURL() {
 
-      
-      
-
-    //     let id = this.props.params.id;
-    //     if(id == 'hoi'){
-    //    // this.setState({isDetails: true});
-    //     console.log(this.props.params.id);
-    //     }
-    // }
-    
     componentWillMount() {
         console.log('WILL MOUNT');
         let url = new URL(window.location.href);
