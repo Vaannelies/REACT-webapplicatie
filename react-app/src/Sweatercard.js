@@ -1,9 +1,8 @@
 import React from 'react';
 
-import Header from "./Header";
 
-import { BrowserRouter } from 'react-router-dom';
-import { Router, Route } from 'react-router';
+import { BrowserRouter, Redirect } from 'react-router-dom';
+import { Route } from 'react-router';
 
 
 class Sweatercard extends React.Component {
@@ -14,6 +13,7 @@ class Sweatercard extends React.Component {
         this.state = {
             isEdit: false,
             isDetails: false,
+            redirect: false,
         };
 
         this.onDelete = this.onDelete.bind(this);
@@ -21,20 +21,9 @@ class Sweatercard extends React.Component {
         this.onEditSubmit = this.onEditSubmit.bind(this);
         this.onBack = this.onBack.bind(this);
         this.showDetails = this.showDetails.bind(this);
-        this.showDetailsURL = this.showDetailsURL.bind(this);
     }
 
     
-  showDetailsURL() {
-   
-   var url = new URL(window.location.href);
-   console.log("Dit is: " + url.searchParams.get("id"));
-
-   if(url.searchParams.get("id") === 'hoi'){
-      console.log('HEYYYYYY');
-    }
-    // }
-}
 
 
     onDelete() {
@@ -54,10 +43,13 @@ class Sweatercard extends React.Component {
         this.setState({isEdit: false});
     }
 
-    onBack() {
-        this.setState({isEdit:false});
-        this.setState({isDetails:false});
-    }
+    // onBack() {
+    //     this.setState({isEdit:false});
+    //     this.setState({isDetails:false});
+    //     this.setState({redirect:true});
+    // }
+
+    onBack = () => this.setState({isEdit:false, isDetails:false, redirect:true});
 
 
     showDetails() {
@@ -95,14 +87,13 @@ class Sweatercard extends React.Component {
 
     render() {
         const {name, size, color, id, created_at} = this.props;
-      
+        const {redirect} = this.state;
+        if(redirect) {
+            return (
 
-        return (
             <div className="card">
-                 <BrowserRouter>
-                    <Route path="/"  />
-                    <Route path="/details:id" render={this.showDetailsURL}/> {/*shows ID*/}
-                 </BrowserRouter>
+                <Redirect to="/" />
+               
 
                 {
                     this.state.isEdit
@@ -166,7 +157,79 @@ class Sweatercard extends React.Component {
                 }
               
             </div>
-        )
+            
+            );
+        }
+        else {
+            return (
+            <div className="card">
+            
+           
+
+            {
+                this.state.isEdit
+                ? (
+                    <form onSubmit={this.onEditSubmit}>
+                            <div>
+                                <span>Name {`  `}
+                                <input placeholder="Enter a name..." ref={nameInput => this.nameInput = nameInput} defaultValue={name} />
+                                </span>
+                            </div>
+                            {`  `}
+                            <div>
+                                <span>Color {`  `}
+                                <input placeholder="Pick a color..." ref={colorInput => this.colorInput = colorInput} defaultValue={color} />
+                                </span>
+                            </div>
+                            {`  `}
+                            <div>
+                                <span>Size {`  `}
+                                <input placeholder="Pick a size..." ref={sizeInput => this.sizeInput = sizeInput} defaultValue={size} />
+                                </span>
+                            </div>
+                            {`  `}
+                            <div><button>Submit</button></div>
+                            <div><button onClick={this.onBack}>Back</button></div>
+                    </form>
+                )
+                : this.state.isDetails 
+                ? (
+                    <div>
+                    <div>{name}</div>
+                    <div><img src="https://cdn0.iconfinder.com/data/icons/clothes-one-2/32/Clothes-89-128.png"/></div>
+                    <div>
+                        Size: {size} 
+                        <br></br> 
+                        Color: {color}
+                        <br></br>
+                        ID: {id}
+                        <br></br>
+                        Created at: {created_at}
+                    </div>
+                    <div><button onClick={this.onEdit}>Edit</button></div>
+                    <div><button onClick={this.onDelete}>Delete</button></div>
+                    <div><button onClick={this.onBack}>Back</button></div>
+                    </div>
+                )
+                : (
+                    <div>
+                    <div>{name}</div>
+                    <div><img src="https://cdn0.iconfinder.com/data/icons/clothes-one-2/32/Clothes-89-128.png"/></div>
+                    <div>
+                        Size: {size} 
+                        <br></br> 
+                        Color: {color}
+                    </div>
+                    <div><button onClick={this.showDetails}>Details?!</button></div>
+                    <div><button onClick={this.onEdit}>Edit</button></div>
+                    <div><button onClick={this.onDelete}>Delete</button></div>
+                    </div>
+                )
+            }
+          
+        </div>
+            );
+        }
     }
 }
 

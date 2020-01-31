@@ -118,7 +118,9 @@ class PokeDex extends React.Component {
             id={sweaters._id} 
             created_at={sweaters.created_at}  
             onDelete={this.onDelete} 
-            onEditSubmit={this.onEditSubmit}>
+            onEditSubmit={this.onEditSubmit}
+            showDetails={this.showDetails}
+            onBack={this.onBack}>
                 
             </Sweatercard>
         )
