@@ -1,7 +1,9 @@
 import React from 'react';
 import AddSweater from './AddSweater';
 import Sweatercard from './Sweatercard';
+import Pagination from './Pagination';
 import { Router, Route, hashHistory} from 'react-router';
+
 
 class PokeDex extends React.Component {
     constructor() {
@@ -9,10 +11,14 @@ class PokeDex extends React.Component {
         this.state = { 
             sweaters: [],
             total: null,
+            page: 1,
         }
         this.onDelete = this.onDelete.bind(this);
         this.onAdd = this.onAdd.bind(this);
         this.onEditSubmit = this.onEditSubmit.bind(this);
+      
+
+      
     }
 
     componentDidMount() {
@@ -20,7 +26,8 @@ class PokeDex extends React.Component {
     }
     
     async loadPokemon() {
-        const response = await fetch(`http://145.24.222.55:8000/sweaters`)
+        var page = (this.state.page - 1) * 5 + 1;
+        const response = await fetch("http://145.24.222.55:8000/sweaters?start=" + page + "&limit=5")
         const json = await response.json()
         console.log(json.items)
         this.setState({sweaters: json.items, total: json.items.length})
@@ -48,6 +55,11 @@ class PokeDex extends React.Component {
 
 
 });
+    }
+
+    onNextpage(){
+        // const nextPage = this.state.page + 1;
+        this.setState({page: 2})
     }
 
     onDelete(id) {
@@ -134,7 +146,7 @@ class PokeDex extends React.Component {
                     <AddSweater onAdd={this.onAdd}/>
                 </div><br></br>
                 <div>
-                    <button>Load next 9 sweaters</button>
+                    <Pagination onNextpage={this.onNextpage}/>
                 </div>
                 <div>
                     Bought: {this.state.total}
