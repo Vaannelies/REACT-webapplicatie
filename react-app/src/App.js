@@ -35,7 +35,7 @@ function App() {
     <div className="App">
     <BrowserRouter>
         <Route path="/"  />
-        <Route path="/details:id" /*render={showDetailsURL()}*//> shows ID
+        <Route path="/details:id"/>
     </BrowserRouter>
 
       

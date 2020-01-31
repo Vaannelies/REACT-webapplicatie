@@ -65,22 +65,27 @@ class Sweatercard extends React.Component {
         console.log(this.state.isDetails);
     }
 
-    showDetailsURL() {
+    // showDetailsURL() {
 
       
       
 
-        let id = this.props.params.id;
-        if(id == 'hoi'){
-       // this.setState({isDetails: true});
-        console.log(this.props.params.id);
-        }
-    }
+    //     let id = this.props.params.id;
+    //     if(id == 'hoi'){
+    //    // this.setState({isDetails: true});
+    //     console.log(this.props.params.id);
+    //     }
+    // }
     
     componentWillMount() {
         console.log('WILL MOUNT');
         let url = new URL(window.location.href);
-        console.log("miep miep " + url.searchParams.get("id"));
+        let url_id = url.searchParams.get("id");
+        let sweater_id = this.props.id;
+
+        if(url_id === sweater_id){
+            this.setState({isDetails: true});
+        }
     }
    
     componentDidMount() {
