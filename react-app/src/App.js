@@ -12,23 +12,30 @@ import { Router, Route } from 'react-router';
 
 function App() {
 
+ 
+
   function showDetailsURL() {
     // let id = this.props.params.id;
     // if(id == 'hoi'){
    // this.setState({isDetails: true});
    var url = new URL(window.location.href);
-    console.log("Dit is: " + url.searchParams.get("id"));
-    // }
-}
+   console.log("Dit is: " + url.searchParams.get("id"));
 
-var url = new URL(window.location.href);
-console.log("Hash: " + url.hash);
+   if(url.searchParams.get("id") === 'hoi'){
+      console.log('HEYYYYYY');
+    //  this.setState({url_id: url.searchParams.get("id")});
+    }
+    // }
+};
+
+
+
   return (
      
     <div className="App">
     <BrowserRouter>
         <Route path="/"  />
-        <Route path="/details:id" render={showDetailsURL()}/>
+        <Route path="/details:id" /*render={showDetailsURL()}*//> shows ID
     </BrowserRouter>
 
       
@@ -41,6 +48,6 @@ console.log("Hash: " + url.hash);
   );
 
   
-}
+};
 
 export default App;

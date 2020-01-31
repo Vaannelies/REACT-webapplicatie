@@ -1,6 +1,9 @@
 import React from 'react';
-import { Router, Route, hashHistory } from "react-router";
+
 import Header from "./Header";
+
+import { BrowserRouter } from 'react-router-dom';
+import { Router, Route } from 'react-router';
 
 
 class Sweatercard extends React.Component {
@@ -18,7 +21,21 @@ class Sweatercard extends React.Component {
         this.onEditSubmit = this.onEditSubmit.bind(this);
         this.onBack = this.onBack.bind(this);
         this.showDetails = this.showDetails.bind(this);
+        this.showDetailsURL = this.showDetailsURL.bind(this);
     }
+
+    
+  showDetailsURL() {
+   
+   var url = new URL(window.location.href);
+   console.log("Dit is: " + url.searchParams.get("id"));
+
+   if(url.searchParams.get("id") === 'hoi'){
+      console.log('HEYYYYYY');
+    }
+    // }
+}
+
 
     onDelete() {
         const { onDelete, id } = this.props;
@@ -62,6 +79,8 @@ class Sweatercard extends React.Component {
     
     componentWillMount() {
         console.log('WILL MOUNT');
+        let url = new URL(window.location.href);
+        console.log("miep miep " + url.searchParams.get("id"));
     }
    
     componentDidMount() {
@@ -75,6 +94,11 @@ class Sweatercard extends React.Component {
 
         return (
             <div className="card">
+                 <BrowserRouter>
+                    <Route path="/"  />
+                    <Route path="/details:id" render={this.showDetailsURL}/> {/*shows ID*/}
+                 </BrowserRouter>
+
                 {
                     this.state.isEdit
                     ? (
